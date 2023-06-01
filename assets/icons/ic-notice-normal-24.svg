@@ -1,0 +1,6 @@
+<svg id="ic-notice-normal-24" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+  <g id="_notification_important" data-name=" notification_important" transform="translate(-134 -728)">
+    <rect id="Rectangle_Copy_29" data-name="Rectangle Copy 29" width="24" height="24" transform="translate(134 728)" fill="rgba(0,0,0,0)"/>
+    <path id="Icon" d="M145.4,749.5a1.853,1.853,0,0,1-1.851-1.851h3.7A1.853,1.853,0,0,1,145.4,749.5Zm7.051-2.79H138.341a.911.911,0,0,1-.854-.571.921.921,0,0,1,.2-1.019l1.2-1.2v-5.581a6.507,6.507,0,0,1,5.116-6.354V730.9a1.4,1.4,0,1,1,2.791,0v1.088a6.506,6.506,0,0,1,5.116,6.354v5.581l1.2,1.2a.931.931,0,0,1-.661,1.591Zm-7.981-5.582v1.861h1.86v-1.861Zm.93-5.581a.931.931,0,0,0-.93.93v1.86a.93.93,0,0,0,1.86,0v-1.86A.931.931,0,0,0,145.4,735.547Z" transform="translate(0.6 0.5)" fill="#fff"/>
+  </g>
+</svg>

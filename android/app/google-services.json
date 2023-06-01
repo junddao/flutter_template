@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "699744279255",
+    "project_id": "smatii",
+    "storage_bucket": "smatii.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:699744279255:android:ccdccf326ae0f2e0692e92",
+        "android_client_info": {
+          "package_name": "com.smatii.readytofly"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "699744279255-mt3fi0m682jrt1p5vjin18e02midgd4a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDdW1GIkh9UIEuzQ4UhxyHePX3GjcEZ53s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "699744279255-mt3fi0m682jrt1p5vjin18e02midgd4a.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "699744279255-299bg8j66fdgk1k6fl98i0dibln5a1dd.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.theego.gongmap.dev"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

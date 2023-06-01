@@ -1,0 +1,30 @@
+include: package:flutter_lints/flutter.yaml
+
+analyzer:
+  exclude: [
+      lib/**.g.dart,
+      lib/utils/icons.dart,
+      lib/1_screens/1_screens.dart,
+      lib/2_providers/2_providers.dart,
+      lib/3_repositories/3_repositories.dart,
+      lib/4_datasource/4_datasource.dart,
+      lib/5_models/5_models.dart,
+    ] #예외처리
+
+  ## ignore(무시) - 안뜸,
+  ##info(정보) - 파란색으로 콘솔 표시됨,
+  ## warning(경고) - 노란색으로 콘솔 표시,
+  ## error(오류) - 빨간색 x 표시(실행안됨)
+
+  errors:
+    invalid_assignment: warning
+    missing_return: error
+    dead_code: warning
+    avoid_print: error
+    todo: info
+
+linter:
+  rules:
+    avoid_print: false
+    depend_on_referenced_packages: false
+    unnecessary_this: false
