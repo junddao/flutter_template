@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:dynamic_color/dynamic_color.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_flavor/flutter_flavor.dart';
@@ -19,50 +20,77 @@ class MyApp extends ConsumerWidget {
     final themeMode = ref.watch(themeNotifierProvider).themeMode;
     // 라우터
     final router = ref.watch(goRouterProvider);
-    return MyFlavorBanner(
-      child: MaterialApp.router(
-        scrollBehavior: EffectlessScrollBehavior(),
-        title: '우편함',
-        routeInformationProvider: router.routeInformationProvider,
-        routeInformationParser: router.routeInformationParser,
-        routerDelegate: router.routerDelegate,
-        debugShowCheckedModeBanner: false,
-        localizationsDelegates: const [
-          //다국어 지원
-          GlobalMaterialLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate,
-          GlobalCupertinoLocalizations.delegate,
-        ],
-        themeMode: themeMode,
-        theme: lightThemeData(),
-        darkTheme: darkThemeData(),
-        supportedLocales: const [
-          //다국어 지원
-          Locale('ko', 'KR'),
-          Locale('en', 'US'),
-        ],
-        // MaterialApp build 순서
-        // 1.home
-        // 2.routes
-        // 3.onGenerateRoute
-        // 4.onUnknownRoute
-        // 5.builder
-        builder: (context, child) {
-          // 폰트사이즈 1.0 고정
-          const maxScaleFactor = 1.00;
-          const minScaleFactor = 1.00;
+    return DynamicColorBuilder(
+        builder: (ColorScheme? lightDynamic, ColorScheme? darkDynamic) {
+      ColorScheme lightScheme;
+      ColorScheme darkScheme;
 
-          return MediaQuery(
-            data: MediaQuery.of(context).copyWith(
-                textScaleFactor: min(max(MediaQuery.of(context).textScaleFactor, minScaleFactor), maxScaleFactor)),
-            child: Builder(builder: (context) {
-              TSSizeConfig().init(context);
-              return child!;
-            }),
-          );
-        },
-      ),
-    );
+      if (lightDynamic != null && darkDynamic != null) {
+        lightScheme = lightDynamic.harmonized();
+        lightCustomColors = lightCustomColors.harmonized(lightScheme);
+
+        // Repeat for the dark color scheme.
+        darkScheme = darkDynamic.harmonized();
+        darkCustomColors = darkCustomColors.harmonized(darkScheme);
+      } else {
+        // Otherwise, use fallback schemes.
+        lightScheme = lightColorScheme;
+        darkScheme = darkColorScheme;
+      }
+      return MyFlavorBanner(
+        child: MaterialApp.router(
+          scrollBehavior: EffectlessScrollBehavior(),
+          title: '우편함',
+          routeInformationProvider: router.routeInformationProvider,
+          routeInformationParser: router.routeInformationParser,
+          routerDelegate: router.routerDelegate,
+          debugShowCheckedModeBanner: false,
+          localizationsDelegates: const [
+            //다국어 지원
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          themeMode: themeMode,
+          theme: lightThemeData().copyWith(
+            colorScheme: lightScheme,
+            extensions: [lightCustomColors],
+          ),
+          darkTheme: darkThemeData().copyWith(
+            colorScheme: darkScheme,
+            extensions: [darkCustomColors],
+          ),
+          supportedLocales: const [
+            //다국어 지원
+            Locale('ko', 'KR'),
+            Locale('en', 'US'),
+          ],
+          // MaterialApp build 순서
+          // 1.home
+          // 2.routes
+          // 3.onGenerateRoute
+          // 4.onUnknownRoute
+          // 5.builder
+          builder: (context, child) {
+            // 폰트사이즈 1.0 고정
+            const maxScaleFactor = 1.00;
+            const minScaleFactor = 1.00;
+
+            return MediaQuery(
+              data: MediaQuery.of(context).copyWith(
+                  textScaleFactor: min(
+                      max(MediaQuery.of(context).textScaleFactor,
+                          minScaleFactor),
+                      maxScaleFactor)),
+              child: Builder(builder: (context) {
+                TSSizeConfig().init(context);
+                return child!;
+              }),
+            );
+          },
+        ),
+      );
+    });
   }
 }
 
