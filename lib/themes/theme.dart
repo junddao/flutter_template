@@ -2,10 +2,10 @@
 
 import 'package:flutter/services.dart';
 import 'package:smatii/index.dart';
-import 'package:smatii/themes/font_family.dart';
 
 ThemeData lightThemeData() {
   return ThemeData(
+    useMaterial3: true,
     brightness: Brightness.light,
     splashColor: Colors.transparent,
     highlightColor: Colors.transparent,
@@ -31,12 +31,8 @@ ThemeData lightThemeData() {
       ),
       elevation: 0,
     ),
-    iconTheme: const IconThemeData(
-      color: TSColors.flyGrey700
-    ),
-    dividerTheme: const DividerThemeData(
-      color: TSColors.flyGrey700
-    ),
+    iconTheme: const IconThemeData(color: TSColors.flyGrey700),
+    dividerTheme: const DividerThemeData(color: TSColors.flyGrey700),
     inputDecorationTheme: const InputDecorationTheme(
       border: OutlineInputBorder(
         borderRadius: BorderRadius.all(Radius.circular(50.0)),
@@ -84,5 +80,7 @@ ThemeData lightThemeData() {
 }
 
 ThemeData darkThemeData() {
-  return ThemeData.dark();
+  return ThemeData.dark(
+    useMaterial3: true,
+  );
 }
